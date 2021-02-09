@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>test</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<form>
+<ion-list>
+  <ion-item>
+    <ion-label>FirstName</ion-label>
+      <ion-input type="text" formControlName="firstname"></ion-input>
+  </ion-item>
+  <ion-item *ngIf="firstname.hasError('required') && firstname.touched">
+    <p><span style="color:red">*firstname required</span></p>
+  </ion-item>
+  <ion-item>
+    <ion-label>Lastname</ion-label>
+      <ion-input type="text" formControlName="lastname"></ion-input>
+  </ion-item>
+</ion-list>
+<button clear ion-button>Submit</button>
+</form>
+</ion-content>

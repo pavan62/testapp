@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar class="abc">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/adduser"></ion-back-button>
+      <ion-title>Add user</ion-title>
+      
+    </ion-buttons>
+        
+ 
+  </ion-toolbar>
+  
+</ion-header>
+<div class="abc">
+  
+</div>
+<ion-content  class="abc">
+  
+    <form  [formGroup]="formgroup">
+      <ion-card >
+        
+        <ion-item><span class="material-icons">
+          person_outline
+          </span>
+          <ion-label position="fixed">Name</ion-label>
+          <ion-input #a type="text" [(ngModel)]="user.name" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <span class="material-icons">
+            phone
+            </span>
+          <ion-label position="fixed">Phone</ion-label>
+          <ion-input  type="number"  [(ngModel)]="user.age" formControlName="phone"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="phone.hasError('required') && phone.touched">
+          <p><span style="color:salmon">*phone number required</span></p>
+        </ion-item>
+        <ion-item>
+          <span class="material-icons">
+            mail
+            </span>
+          <ion-label position="fixed">Email</ion-label>
+          <ion-input  type="email"  [(ngModel)]="user.mail" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="email.hasError('required') && email.touched">
+          <p><span style="color:salmon">*email required</span></p>
+        </ion-item>
+        <ion-item><span class="material-icons">
+          location_on
+          </span>
+          <ion-label>Location</ion-label>
+          <ion-button (click)="getGeolocation()">Get Location</ion-button>
+          <ion-badge class="ion-text-wrap" color="medium">{{address}}</ion-badge>
+        </ion-item>
+        <ion-item>
+          <span class="material-icons">
+            backup
+            </span>
+          <ion-label>Upload Image</ion-label>
+          <img src="{{imageUrl}}" height="90" width="90">
+          <ion-button (click)="getcamera()">Camera</ion-button>
+          <ion-button (click)="getgallery()">Gallery</ion-button>
+        
+        </ion-item>
+        </ion-card>
+    </form>
+      
+        
+            <ion-button clear class="c" color="primary" (click)="submit()"  [routerLink]="'/confirm'">Confirm</ion-button>
+         
+     
+      <!-- <ion-item class="ion-float-right" lines="none">
+        <ion-button color="primary"  [routerLink]="'/confirm'">View user</ion-button>
+      </ion-item> -->
+    
+  
+  
+</ion-content>
